@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Ngotngao🍬</title>
+<style>
+  :root{
+    --bg1:#ffd6e7;
+    --bg2:#ffe6f0;
+    --accent:#ff6fa3;
+  }
+  html,body{height:100%;margin:0;padding:0}
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Comic Sans MS', 'Brush Script MT', cursive;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+    animation: bgShift 18s ease-in-out infinite;
+    position: relative;
+  }
+
+  @keyframes bgShift {
+    0% { background: linear-gradient(180deg, #ffd6e7 0%, #ffe6f0 100%); }
+    33% { background: linear-gradient(180deg, #fff1f6 0%, #ffeedd 100%); }
+    66% { background: linear-gradient(180deg, #ffe9f2 0%, #fff0f8 100%); }
+    100% { background: linear-gradient(180deg, #ffd6e7 0%, #ffe6f0 100%); }
+  }
+
+  /* ring text */
+  .ring {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    color: var(--accent);
+    font-weight: bold;
+    animation: rotate 12s linear infinite;
+    text-shadow: 0 0 10px rgba(255,105,150,0.25);
+    pointer-events: none;
+    letter-spacing: 2px;
+  }
+  @keyframes rotate{
+    from{transform: translateX(-50%) rotate(0deg)}
+    to{transform: translateX(-50%) rotate(360deg)}
+  }
+
+  /* envelope */
+  .envelope {
+    position: relative;
+    width: 260px;
+    height: 170px;
+    background: linear-gradient(180deg,#ffd7e3,#ffc9da);
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    cursor: pointer;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform .35s ease;
+    z-index: 4;
+  }
+  .envelope:hover{ transform: translateY(-6px) scale(1.03); }
+
+  .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:55%;
+    background: linear-gradient(180deg,#ffb6c1,#ffa8b8);
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transform-origin: top;
+    transition: transform .9s cubic-bezier(.2,.9,.3,1);
+    backface-visibility: hidden;
+  }
+
+  .letter {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%) translateY(60px);
+    width: 200px;
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    text-align: left;
+    opacity: 0;
+    transition: all .9s ease;
+    z-index: 3;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.45;
+  }
+
+  .open .flap { transform: rotateX(-180deg) translateY(-2px); }
+  .open .letter { opacity: 1; transform: translateX(-50%) translateY(-78px); }
+
+  .letter h3 { margin:0 0 8px 0; font-size:16px; text-align:center; }
+  .letter .handwriting {
+    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+    font-size:15px;
+    color:#b43b6d;
+    min-height:56px;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+  }
+
+  /* hearts container uses body as parent; hearts inserted dynamically */
+  .heart {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    transform: rotate(45deg);
+    pointer-events: none;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 0 6px rgba(255,130,170,0.45));
+  }
+  .heart::before, .heart::after {
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    border-radius: 50%;
+  }
+  .heart::before { top: -50%; left: 0; }
+  .heart::after { left: 50%; top: 0; }
+
+  /* sparkle */
+  .sparkle {
+    position: absolute;
+    width:6px;height:6px;border-radius:50%;
+    background: radial-gradient(circle,#fff 0%, rgba(255,255,255,0) 70%);
+    pointer-events:none;
+    filter: blur(.6px);
+  }
+
+  /* small responsive tweak */
+  @media (max-width:420px){
+    .envelope{ width:220px; height:150px; }
+    .letter{ width:180px; padding:16px; font-size:13px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="ring">💗 Happy Anniversary 💗 Happy Anniversary 💗</div>
+
+  <div class="envelope" id="envelope">
+    <div class="flap"></div>
+    <div class="letter" id="letter">
+      <h3>💌 Gửi: Ngotngao🍬</h3>
+      <div class="handwriting" id="message">
+        <!-- lời chúc sẽ được viết dần bởi JS -->
+       Hiii em iu ! 
+Nhanh thật nhở thế là mình đã iu nhau được 2 năm rùi đó. Anh không dám dùng từ ở cạnh vì là 2 năm iu nhau mình trải qua quãng thời gian mà mình xa nhau nhiều vô cùng luôn í
+Bản thân anh nghĩ mình cũng là một nhười cứng rắn , có kinh nghiệm kiểm soát yêu đương nma cứ mỗi khi gặp và thấy em, anh đều bị chùn ấy ứ muốn nép vào em ôm em thuiii.
+Một năm đầu tiên quả là tuyệt đẹp, nma trời quang thì dấu hiệu của một cơn bão đang tới, năm thứ 2 mình bên nhau thực sự rất khó khăn cho cả anh và em.Từ những việc lặt vặt,
+nhiều chuyện không đáng nhưng vì chúng mình có cái tôi quá cao nên như zậy í, thế nên anh sẽ tìm cách hòa hợp lại. Còn anh biết tại sao hay cãi nhau rùi, do tâm lý mình í, trước 
+đó em hay đề xuất chia tay thì anh nghĩ 1 phần nào đó trong em nghĩ đến việc không có anh cũng không sao, không phải như ngày xưa 2 người nhịn nhau (cái nầy a trải qua rùi anh bít).
+Nhưng mà không sao, anh luôn quan niệm anh sẽ cố gắng đến cùng dù anh biết quá trình đó rất khó khăn nên mình cứ coi đây là trải nghiệm phòng việc em đi ANH chẳng hạn :)).
+Nhưng rùi lúc anh mệt mỏi nhất vẫn chỉ có em tâm sự và anh tâm sự với em, cũng có những chuyện k thể kể cho em được vì nhiều lý do xảy ra nên em thông cảm anh nha !!!
+Rùi đến lúc em bay vào đây chơi với anh, lần đầu dẫn ngyeu đi chơi xa dù mình chưa đi bao giờ, mình cũng có những kỉ niệm siu vuiiii trong chuyến đi đó, tình cảm của 2 đứa hàn gắn lại và
+giải tỏa cảm xúc nhớ nhau hơn. Anh thề với em, chỉ cần nhìn thấy em dù make hay mộc, chỉ cần thấy em thui là anh muốn hạy vào rúc vào lòng em như thời còn ở nhà ý...
+Zậy đó, giông bão nào cũng sẽ qua đi, mọi quyết định đúng sai đều do mình, chúc tình iu của anh luôn tích cực, có nhiều động lực,nói chuyện khéo léo hơn chút là em đã đứng ở một tầm cao
+khác so với con gái mặt bằng chung tuổi em ruiiii. Và ngày càng yêu anh nhiều hơn, mọi quyết định a h mong chúng ta đều bàn bạc được với nhau để kết quả không ai phải hối tiếc nhé
+                 ANH YÊU EM <3
+        Anh mong anh sẽ sớm trở về cạnh em cùng em bước đi tiếp dù cho hoàn cảnh như nào nhéeee💕
+Note: có vài đoạn a định viết nhật kí nma do đêm anh lười quá nên tạm gác lại:
+
+      </div>
+    </div>
+  </div>
+
+<script>
+/* ---------- preserve original structure: envelope + letter ---------- */
+const envelope = document.getElementById('envelope');
+const letter = document.getElementById('letter');
+const messageEl = document.getElementById('message');
+let isOpen = false;
+
+/* write-effect: hide text initially, reveal char-by-char when opened */
+const originalText = messageEl.textContent.trim();
+messageEl.textContent = ''; // clear to animate later
+
+function revealText() {
+  messageEl.textContent = '';
+  let i = 0;
+  const speed = 28; // ms per char (handwriting feel)
+  const interval = setInterval(()=> {
+    messageEl.textContent += originalText.charAt(i);
+    i++;
+    if(i >= originalText.length) clearInterval(interval);
+  }, speed);
+}
+
+/* envelope click toggles open + play piano music */
+envelope.addEventListener('click', async () => {
+  envelope.classList.toggle('open');
+  isOpen = envelope.classList.contains('open');
+  if(isOpen){
+    revealText();
+    startPianoLoop(); // start background piano
+  } else {
+    // closing: optionally stop music
+    stopPianoLoop();
+    // reset text so it writes again next open
+    setTimeout(()=> { messageEl.textContent = ''; }, 300);
+  }
+});
+
+/* ---------- Hearts + sparkles system ---------- */
+const maxHearts = 120; // upper bound to control perf
+let heartCount = 0;
+
+// utility to random between range
+function rand(min, max) { return min + Math.random()*(max-min); }
+
+// create one heart with randomized properties
+function spawnHeart() {
+  if(heartCount > maxHearts) return;
+  heartCount++;
+  const el = document.createElement('div');
+  el.className = 'heart';
+  // size variations
+  const size = Math.floor(rand(8, 28));
+  el.style.width = size + 'px';
+  el.style.height = size + 'px';
+  // color variations in pink palette
+  const hue = Math.floor(rand(320,350));
+  const light = Math.floor(rand(60,85));
+  el.style.color = `hsl(${hue} 80% ${light}%)`;
+  // start position bottom random
+  const startX = rand(5, 95); // % of viewport width
+  el.style.left = startX + 'vw';
+  el.style.bottom = '-6vh';
+  el.style.opacity = 0;
+
+  // animation parameters
+  const rise = rand(6, 16); // seconds to rise
+  const driftX = rand(-10,10); // vw drift from start
+  const rotate = rand(-720,720); // degrees over lifetime
+  const delay = 0;
+
+  document.body.appendChild(el);
+
+  // use requestAnimationFrame loop for smooth motion and control
+  const start = performance.now() + delay*1000;
+  const lifetime = rise * 1000;
+  function animate(now){
+    const t = (now - start) / lifetime; // 0..1
+    if(t < 0){
+      requestAnimationFrame(animate); return;
+    }
+    if(t >= 1){
+      el.remove(); heartCount--; return;
+    }
+    // vertical progress
+    const ease = t<0.6 ? (t/0.6) : 1 - Math.pow((t-0.6)/0.4,2);
+    const y = ease * (110 + rand(0,20)); // vh
+    const x = startX + driftX * ease;
+    const rot = rotate * ease;
+    const opa = Math.max(0, 1 - t*1.1);
+    el.style.transform = `translate3d(${(x - startX)}vw, -${y}vh, 0) rotate(${45 + rot}deg)`;
+    el.style.opacity = opa;
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+
+  // occasional sparkle near heart
+  if(Math.random() < 0.35){
+    spawnSparkleNear(el, size);
+  }
+}
+
+// create sparkle near heart element
+function spawnSparkleNear(anchorEl, size){
+  const s = document.createElement('div');
+  s.className = 'sparkle';
+  const rect = anchorEl.getBoundingClientRect();
+  // random small offset from heart
+  const left = rect.left + rand(-8,8);
+  const top = rect.top + rand(-8,8);
+  s.style.left = left + 'px';
+  s.style.top = top + 'px';
+  document.body.appendChild(s);
+  // animate opacity + scale via simple JS loop
+  const dur = rand(1000,2400);
+  const start = performance.now();
+  function anim(now){
+    const t = (now - start)/dur;
+    if(t >= 1){ s.remove(); return; }
+    const scale = 0.6 + 0.8 * Math.sin(Math.PI * t);
+    s.style.transform = `scale(${scale})`;
+    s.style.opacity = (1 - t*1.1).toString();
+    requestAnimationFrame(anim);
+  }
+  requestAnimationFrame(anim);
+}
+
+// spawn hearts continuously with various rates
+setInterval(()=> {
+  // burst sometimes
+  const burst = Math.random() < 0.09;
+  if(burst){
+    const count = Math.floor(rand(5,18));
+    for(let i=0;i<count;i++){
+      setTimeout(spawnHeart, i * rand(50,160));
+    }
+  } else {
+    spawnHeart();
+  }
+}, 160);
+
+/* ---------- Soft ambient sparkles throughout background ---------- */
+setInterval(()=> {
+  const s = document.createElement('div');
+  s.className = 'sparkle';
+  s.style.left = rand(2,98) + 'vw';
+  s.style.top = rand(2,98) + 'vh';
+  s.style.opacity = 0;
+  document.body.appendChild(s);
+  const dur = rand(2000,5200);
+  const start = performance.now();
+  function anim(now){
+    const t = (now - start) / dur;
+    if(t >= 1){ s.remove(); return; }
+    // pulse
+    const opacity = 0.15 + 0.65 * Math.sin(Math.PI * t);
+    const scale = 0.6 + 0.9 * Math.sin(Math.PI * t);
+    s.style.opacity = opacity;
+    s.style.transform = `scale(${scale})`;
+    requestAnimationFrame(anim);
+  }
+  requestAnimationFrame(anim);
+}, 420);
+
+/* ---------- Simple WebAudio "piano-like" loop ---------- */
+/* This is a gentle synthesized piano-ish progression. It plays after envelope opens. */
+let audioCtx = null;
+let pianoPlaying = false;
+let scheduled = [];
+function ensureAudio() {
+  if(!audioCtx){
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+}
+
+/* play a single "note" with short attack, longer release; uses multiple oscillators + filter to approximate mellow tone */
+function playNoteAt(time, freq, duration, velocity=0.9) {
+  const ctx = audioCtx;
+  // carriers
+  const o1 = ctx.createOscillator(); o1.type = 'sine'; o1.frequency.value = freq;
+  const o2 = ctx.createOscillator(); o2.type = 'sine'; o2.frequency.value = freq * 2.002; // tiny detune
+  const o3 = ctx.createOscillator(); o3.type = 'triangle'; o3.frequency.value = freq * 0.999;
+
+  // gain envelopes
+  const g = ctx.createGain(); g.gain.value = 0;
+  const g2 = ctx.createGain(); g2.gain.value = 0;
+  const out = ctx.createGain(); out.gain.value = velocity * 0.65;
+
+  // filter to mellow
+  const filter = ctx.createBiquadFilter(); filter.type = 'lowpass'; filter.frequency.value = 3500;
+
+  o1.connect(g);
+  o2.connect(g2);
+  o3.connect(g2);
+  g.connect(filter);
+  g2.connect(filter);
+  filter.connect(out);
+  out.connect(ctx.destination);
+
+  const attack = 0.012;
+  const release = Math.max(0.6, duration * 0.9);
+  g.gain.setValueAtTime(0, time);
+  g.gain.linearRampToValueAtTime(1.0, time + attack);
+  g.gain.exponentialRampToValueAtTime(0.0001, time + duration + release);
+
+  g2.gain.setValueAtTime(0, time);
+  g2.gain.linearRampToValueAtTime(0.6, time + attack*1.2);
+  g2.gain.exponentialRampToValueAtTime(0.0001, time + duration + release + 0.08);
+
+  o1.start(time); o2.start(time); o3.start(time);
+  o1.stop(time + duration + release + 0.12);
+  o2.stop(time + duration + release + 0.12);
+  o3.stop(time + duration + release + 0.12);
+}
+
+/* a chord helper */
+function playChordAt(time, freqs, dur) {
+  freqs.forEach(f => playNoteAt(time, f, dur, 0.7));
+}
+
+/* schedule a soft looping progression */
+let pianoIntervalId = null;
+function startPianoLoop(){
+  if(pianoPlaying) return;
+  ensureAudio();
+  // resume context if suspended by browser
+  if(audioCtx.state === 'suspended') audioCtx.resume();
+  pianoPlaying = true;
+
+  // simple progression in C major-ish (frequencies)
+  const C4 = 261.63, E4 = 329.63, G4 = 392.00, A4 = 440.00;
+  const A3 = 220.00, F3 = 174.61, D4 = 293.66;
+  // loop function: schedule a few measures
+  let t0 = audioCtx.currentTime + 0.05;
+  function scheduleOnce(){
+    let t = t0;
+    // measure 1: C major arpeggio
+    playNoteAt(t, C4, 0.9); playNoteAt(t+0.18, E4, 0.9, 0.65); playNoteAt(t+0.36, G4, 1.0, 0.6);
+    // gentle chord
+    playChordAt(t+1.1, [C4, E4, G4], 1.4);
+    // measure 2: F -> Dm feel
+    playNoteAt(t+2.6, F3*2, 0.9); playNoteAt(t+2.82, A3*2, 1.1);
+    playChordAt(t+3.6, [D4, F3*2, A3*2], 1.4);
+    // little flourish
+    playNoteAt(t+5.3, G4, 0.6); playNoteAt(t+5.6, E4, 0.5);
+    t0 = t + 6.2; // next cycle
+  }
+  scheduleOnce();
+  pianoIntervalId = setInterval(scheduleOnce, 6200); // schedule repeatedly
+}
+
+function stopPianoLoop(){
+  if(!pianoPlaying) return;
+  pianoPlaying = false;
+  if(pianoIntervalId) { clearInterval(pianoIntervalId); pianoIntervalId = null; }
+  // suspend audio context for quietness
+  if(audioCtx && audioCtx.state === 'running') {
+    try { audioCtx.suspend(); } catch(e) { /* ignore */ }
+  }
+}
+
+/* optional: auto-stop after long time to save CPU (10 minutes) */
+setInterval(()=> {
+  if(!pianoPlaying) return;
+  // if playing for >10min, stop
+  // (for simplicity no tracking; leaving it to user to close)
+}, 600000);
+
+</script>
+</body>
+</html>
